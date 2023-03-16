@@ -24,4 +24,3 @@ bin/
 *.spec
 __pycache__/
 *.db
-frontend/env/
