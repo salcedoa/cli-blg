@@ -24,9 +24,3 @@ bin/
 *.spec
 __pycache__/
 *.db
-
-!env/static
-!env/templates
-!env/*.py
-!env/db/
-!env/requirements.txt
