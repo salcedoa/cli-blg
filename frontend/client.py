@@ -1,6 +1,9 @@
 import time, requests
+from dotenv import dotenv_values
 
-url = "192.168.0.0" # take from .env file
+# get .env values
+config = dotenv_values(".env")
+url = config['DOMAIN'] + ':' + config['PORT'] + '/'
 
 def inputNewPost():
   print("NEW POST (Press Ctr-D and Enter to finsih post)")
