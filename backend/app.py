@@ -1,15 +1,23 @@
 from flask import Flask, request, render_template, g
-import sqlite3
+from dotenv import dotenv_values
 from datetime import datetime
+import sqlite3, re
 
 app = Flask(__name__)
-app.secret_key = "test"
-customTimeFormat = "%d-%m-%Y @ %H:%M"
+
+# Setting up variables from .env
+config = dotenv_values(".env")
+customTimeFormat = config["TIMEFORMAT"]
+name = config["NAME"]
+# Set the main header of the web page
+if name != "": name = config["NAME"]
+elif name == "": name = "my"
+else: raise Exception("No name variable detected, please ensure that you set up the .env file")
 
 @app.route("/")
 def index():
-    # query the database for all posts and return them in a JSON string object
-    return render_template("index.html",posts=fetchPosts())
+    # Query the database for all posts and return them in a JSON string object
+    return render_template("index.html",posts=fetchPosts(), name=name)
 
 @app.route('/json', methods=['POST'])
 def processPost():
@@ -26,6 +34,13 @@ def processPost():
     return 'Post saved!'
 
 # DATABASE FUNCTIONS
+def init_db():
+    with app.app_context():
+        db = get_db()
+        with app.open_resource('db/schema.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
+
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
@@ -47,9 +62,22 @@ def fetchPosts():
     conn.close()
     
     # store the query results into a json object (python list)
-    allPosts = [{'title': row[1], 'body': row[2], 'postTime': convertTime(row[3])} for row in rows]
+    allPosts = [{'title': row[1], 'body': parseBody(row[2]), 'postTime': convertTime(row[3])} for row in rows]
     return allPosts
 
+# Returns an entry body which has been formatted to be displayed with HTML
+def parseBody(text):
+
+    # Detect links
+    urlRegex = r"(https?://\S+)"
+    text = re.sub(urlRegex, r'<a href="\g<0>">\g<0></a>', text)
+
+    # Replace \n with HTML line breaks
+    formattedText = text.replace('\n', '<br>')
+    
+    return formattedText
+
+# Returns the timestamp in the specified format
 def convertTime(fetchedTime):
     # Convert epoch time to datetime object
     datetimeObject = datetime.fromtimestamp(fetchedTime)
@@ -58,14 +86,6 @@ def convertTime(fetchedTime):
     displayTime = datetimeObject.strftime(customTimeFormat)
 
     return displayTime
-
-def init_db():
-    with app.app_context():
-        db = get_db()
-        with app.open_resource('db/schema.sql', mode='r') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
-
 
 if __name__ == '__main__':
     app.run()
