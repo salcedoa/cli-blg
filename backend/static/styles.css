@@ -28,3 +28,8 @@ p {
     width: 100%;
   }
 }
+
+a {
+  color: #66ccff;
+  word-wrap: break-word;
+}
