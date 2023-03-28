@@ -33,3 +33,13 @@ a {
   color: #66ccff;
   word-wrap: break-word;
 }
+
+.important-links {
+  color: rgb(75, 47, 75);
+  padding: 10px 0;
+}
+
+img {
+  margin-top: 10px;
+  max-width: 300px;
+}
