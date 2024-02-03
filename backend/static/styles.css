@@ -3,7 +3,7 @@ body {
   background-color: cadetblue;
   margin: 0;
   padding: 8px;
-  height: 100vh;
+  height: 100%;
 }
 
 .post-container {
@@ -27,6 +27,10 @@ p {
   .post-container {
     width: 100%;
   }
+
+  iframe {
+    width: 100%;
+  }
 }
 
 a {
@@ -42,4 +46,8 @@ a {
 img {
   margin-top: 10px;
   max-width: 300px;
+}
+
+iframe {
+  max-width: 500px;
 }
