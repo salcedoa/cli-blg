@@ -1,6 +1,7 @@
 import time, requests, platform
 from dotenv import dotenv_values
 from datetime import datetime
+import json
 
 # get .env values
 config = dotenv_values(".env")
