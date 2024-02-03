@@ -14,9 +14,6 @@ python -m venv env
 
 # Activate the virtual environment
 env\Scripts\activate
-
-#Install dependencies
-pip install -r requirements.txt
 ```
 
 On MacOs/Linux
@@ -35,7 +32,9 @@ pip install -r requirements.txt
 3. Start Flask server.
 ```
 flask --app app run
+```
 
-# Debug mode
+Debug mode
+```
 flask --app app run --debug
 ```
