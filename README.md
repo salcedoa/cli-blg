@@ -3,6 +3,9 @@ Microblogging from the command line!
 
 Still WIP
 
+Project picked back up recently:
+![Gantt diagram](media/gantt.png)
+
 #### Setting up the backend
 1. Create virtual environment
 
