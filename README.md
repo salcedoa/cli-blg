@@ -32,7 +32,20 @@ source env/bin/activate
 ```
 pip install -r requirements.txt
 ``` 
-3. Start Flask server.
+3. Create config file
+```
+touch .env
+```
+
+Example config:
+```
+TITLE= "publsh ~salcedoa"
+TIMEFORMAT= '%b %d %Y @ %H:%M'
+POSTS_PER_PAGE= 10
+```
+
+
+4. Start Flask server.
 ```
 flask --app app run
 ```

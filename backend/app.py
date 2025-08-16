@@ -25,7 +25,7 @@ with app.app_context():
 # Setting up variables from .env
 config = dotenv_values(".env")
 customTimeFormat = config["TIMEFORMAT"]
-name = config["NAME"]
+name = config["TITLE"]
 postsPerPage = int(config["POSTS_PER_PAGE"])
 
 @app.route('/')
