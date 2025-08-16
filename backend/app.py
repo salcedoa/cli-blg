@@ -40,6 +40,7 @@ def posts(page=1):
     
     return render_template("index.html",page=page, name=name)
 
+# Add a post
 @app.route('/json', methods=['POST'])
 def processPost():
     # Get the JSON data from request and create dictionary
@@ -51,6 +52,19 @@ def processPost():
 
     return 'New post added!'
 
+# Delete a post of given ID
+@app.route('/delete/<int:post_id>', methods=['DELETE'])
+def deletePost(post_id):
+    # Find post of given ID
+    try:
+        # https://flask-sqlalchemy.readthedocs.io/en/stable/queries/#select
+        markedPost = db.session.execute(db.select(Posts).filter_by(id=post_id)).scalar_one()
+        db.session.delete(markedPost)
+        db.session.commit()
+        return "Post #" + str(post_id) + " deleted", 200
+    except:
+        return "Post not found", 404
+    
 # SQLite Datetime only accepts Python datetime, so the JSON request is converted
 def convertJsonToDatetime(jsonTime):
     datetimeObject = datetime.strptime(jsonTime, "%Y-%m-%d %H:%M:%S")

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>cli-blg</title>
+    <title>{{ name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
@@ -12,7 +12,7 @@
     {% for post in page %}
       <div class="post-container">
         <h3>{{ post.title }}</h3>
-        <small>{{ post.postTime }}</small>
+        <small>{{ post.postTime }} | id:{{ post.id }}</small>
         <p>{{ post.body|safe }}</p>
       </div>
     {% endfor %}
