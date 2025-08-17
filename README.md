@@ -1,5 +1,5 @@
-# cli-blg
-Microblogging from the command line!
+# publsh - Microblogging for the terminal
+CLI microblogging server that works with [publsh](https://github.com/salcedoa/publsh) client
 
 Still WIP
 
