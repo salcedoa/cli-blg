@@ -52,6 +52,38 @@ def processPost():
 
     return 'New post added!'
 
+# First part of edit function. Post data is fetched a presented to the user to edit
+@app.route('/post/<int:post_id>', methods=['GET'])
+def getPost(post_id):
+    post = db.session.execute(db.select(Posts).filter_by(id=post_id)).scalar_one()
+    if post is None:
+        return {"error": "Post not found"}, 404
+    return {
+        "id": post.id,
+        "title": post.title,
+        "body": post.body,
+        "postTime": post.postTime.isoformat(),
+    }
+
+
+@app.route('/edit/<int:post_id>', methods=['PUT'])
+def editPost(post_id):
+    postData = request.json
+    
+    # Find post of given ID
+    try:
+        markedPost = db.session.execute(db.select(Posts).filter_by(id=post_id)).scalar_one()
+        if "title" in postData:
+            markedPost.title = postData["title"]
+        if "body" in postData:
+            markedPost.body = postData["body"]
+
+        db.session.commit()
+        return "Post #" + str(post_id) + " edited", 200
+    except:
+        db.session.rollback()
+        return "Post not found", 404
+
 # Delete a post of given ID
 @app.route('/delete/<int:post_id>', methods=['DELETE'])
 def deletePost(post_id):
