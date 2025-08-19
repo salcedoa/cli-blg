@@ -1,0 +1,64 @@
+body {
+  font-family: "Georgia", serif;
+  background: #f9f9f9;
+  color: #111;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  border-bottom: 2px solid #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.search-bar {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-bar input[type="search"] {
+  border: 1px solid #333;
+  padding: 6px 10px;
+  font-family: inherit;
+}
+
+.posts-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-container {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin: 0;
+}
+
+small {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+footer {
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.pagination a {
+  margin: 0 5px;
+  color: #333;
+  text-decoration: none;
+}
+
+.pagination strong {
+  font-weight: bold;
+}

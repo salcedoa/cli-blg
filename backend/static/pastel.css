@@ -1,0 +1,86 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #fdf6f9;
+  color: #333;
+  margin: 0;
+  padding: 16px;
+}
+
+h1 {
+  color: #b56576;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar label {
+  font-weight: bold;
+  color: #6d597a;
+  margin-right: 8px;
+}
+
+.search-bar input[type="search"] {
+  padding: 6px 10px;
+  border: 2px solid #b56576;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input[type="search"]:focus {
+  border-color: #e56b6f;
+  outline: none;
+}
+
+.posts-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.post-container {
+  background: #fff;
+  border: 1px solid #e2d9e4;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  color: #6d597a;
+  margin-bottom: 6px;
+}
+
+p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+small {
+  color: #888;
+}
+
+footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.pagination a {
+  margin: 0 6px;
+  text-decoration: none;
+  color: #b56576;
+}
+
+.pagination strong {
+  color: #e56b6f;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}

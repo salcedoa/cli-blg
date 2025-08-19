@@ -4,11 +4,34 @@ body {
   margin: 0;
   padding: 8px;
   height: 100%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.search-bar {
+  width: 600px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  max-width: 1200px;
+  margin: auto;
 }
 
 .post-container {
   padding: 2px;
   width: 600px;
+  margin: 4px auto;
+}
+
+.post-container h3,p,small {
+  margin-bottom: 0.3em;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
 }
 
 h3 {
@@ -50,4 +73,9 @@ img {
 
 iframe {
   max-width: 500px;
+}
+
+footer {
+  padding-top: 2em;
+  text-align: center;
 }

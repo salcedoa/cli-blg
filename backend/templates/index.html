@@ -5,39 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cyan.css') }}">
   </head>
   <body>
-    <h1>{{ name }}</h1>
-    {% for post in page %}
-      <div class="post-container">
-        <h3>{{ post.title }}</h3>
-        <small>{{ post.postTime }} | id:{{ post.id }}</small>
-        <p>{{ post.body|safe }}</p>
+    <div class="main">
+      <h1>{{ name }}</h1>
+      <div class="search-bar">
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search"><br><br>
       </div>
-    {% endfor %}
-    
-    <footer>
-    {% macro render_pagination(pagination, endpoint) %}
-    <div class=page-items>
-      page {{ pagination.page }} | {{ pagination.total }} total posts
+      <div class="posts-container">
+        {% for post in page %}
+          <div class="post-container">
+            <h3>{{ post.title }}</h3>            
+            <p>{{ post.body|safe }}</p>
+            <small>{{ post.postTime }} ~ Post #{{ post.id }}</small>
+          </div>
+        {% endfor %}
+      </div>
+      <footer>
+        {% macro render_pagination(pagination, endpoint) %}
+        <div class=page-items>
+          page {{ pagination.page }} | {{ pagination.total }} total posts
+        </div>
+        <div class=pagination>
+          {% for page in pagination.iter_pages() %}
+          {% if page %}
+          {% if page != pagination.page %}
+          <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+          {% else %}
+          <strong>{{ page }}</strong>
+          {% endif %}
+          {% else %}
+          <span class=ellipsis>…</span>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endmacro %}
+        <div>{{ render_pagination(page, 'posts') }}</div>
+      </footer>
     </div>
-    <div class=pagination>
-      {% for page in pagination.iter_pages() %}
-      {% if page %}
-      {% if page != pagination.page %}
-      <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
-      {% else %}
-      <strong>{{ page }}</strong>
-      {% endif %}
-      {% else %}
-      <span class=ellipsis>…</span>
-      {% endif %}
-      {% endfor %}
-    </div>
-    {% endmacro %}
-    </footer>
-
-    <div>{{ render_pagination(page, 'posts') }}</div>
   </body>
 </html>

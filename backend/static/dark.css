@@ -1,0 +1,65 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: #121212;
+  color: #eee;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #ffcc70;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.search-bar input[type="search"] {
+  background: #1e1e1e;
+  border: 1px solid #555;
+  padding: 6px 10px;
+  color: #eee;
+  border-radius: 4px;
+}
+
+.search-bar input[type="search"]:focus {
+  border-color: #ffcc70;
+  outline: none;
+}
+
+.posts-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-container {
+  background: #1e1e1e;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  color: #ffcc70;
+}
+
+small {
+  color: #aaa;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #bbb;
+}
+
+.pagination a {
+  color: #ffcc70;
+  margin: 0 6px;
+}
+
+.pagination strong {
+  color: #fff;
+}
