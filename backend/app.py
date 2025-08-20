@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from dotenv import dotenv_values
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 import re, os
 
 db = SQLAlchemy()
@@ -30,15 +31,22 @@ postsPerPage = int(config["POSTS_PER_PAGE"])
 
 @app.route('/')
 def posts(page=1):
+    q = request.args.get("q", "").strip()
+    query = Posts.query.order_by(Posts.postTime.desc())
+
+    # If filter q is provided, apply it
+    if q:
+        query = query.filter(or_(Posts.title.contains(q), Posts.body.contains(q)))
+
     # Query the database for all posts and return them in a JSON string object
-    page = db.paginate(db.select(Posts).order_by(Posts.postTime.desc()), per_page=postsPerPage)
+    page = query.paginate(per_page=postsPerPage)
     
     # Reformat the text and date for display
     for post in page.items:
         post.body = parseBody(post.body)
         post.postTime = convertTime(post.postTime)
     
-    return render_template("index.html",page=page, name=name)
+    return render_template("index.html",page=page, name=name, q=q)
 
 # Add a post
 @app.route('/json', methods=['POST'])

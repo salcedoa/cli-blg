@@ -11,8 +11,11 @@
     <div class="main">
       <h1>{{ name }}</h1>
       <div class="search-bar">
-        <label for="search">Search:</label>
-        <input type="search" id="search" name="search"><br><br>
+        <form method="get" action="{{ url_for('posts') }}">
+          <label for="search">Search:</label>
+          <input type="search" id="search" name="q" value="{{ q or '' }}">
+          <button type="submit">Go</button>
+        </form>
       </div>
       <div class="posts-container">
         {% for post in page %}
@@ -24,25 +27,25 @@
         {% endfor %}
       </div>
       <footer>
-        {% macro render_pagination(pagination, endpoint) %}
-        <div class=page-items>
+        {% macro render_pagination(pagination, endpoint, q=None) %}
+        <div class="page-items">
           page {{ pagination.page }} | {{ pagination.total }} total posts
         </div>
-        <div class=pagination>
+        <div class="pagination">
           {% for page in pagination.iter_pages() %}
-          {% if page %}
-          {% if page != pagination.page %}
-          <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
-          {% else %}
-          <strong>{{ page }}</strong>
-          {% endif %}
-          {% else %}
-          <span class=ellipsis>…</span>
-          {% endif %}
+            {% if page %}
+              {% if page != pagination.page %}
+                <a href="{{ url_for(endpoint, page=page, q=q) }}">{{ page }}</a>
+              {% else %}
+                <strong>{{ page }}</strong>
+              {% endif %}
+            {% else %}
+              <span class="ellipsis">…</span>
+            {% endif %}
           {% endfor %}
         </div>
         {% endmacro %}
-        <div>{{ render_pagination(page, 'posts') }}</div>
+        <div>{{ render_pagination(page, 'posts', q) }}</div>
       </footer>
     </div>
   </body>
