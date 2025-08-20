@@ -29,6 +29,11 @@ a {
   color: #00adb5;
 }
 
+img {
+  margin-top: 10px;
+  max-width: 300px;
+}
+
 footer {
   padding-top: 1em;
   text-align: center;

@@ -49,6 +49,15 @@ small {
   color: #aaa;
 }
 
+img {
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+a {
+  color: #ffae70;
+}
+
 footer {
   margin-top: 30px;
   text-align: center;

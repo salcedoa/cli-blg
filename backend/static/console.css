@@ -23,11 +23,16 @@ h1, h3 {
 }
 
 a {
-  color: #ff00ff;
+  color: #f5ae44;
   text-decoration: underline;
 }
 a:hover {
   color: #ffff00;
+}
+
+img {
+  margin-top: 10px;
+  max-width: 300px;
 }
 
 footer {

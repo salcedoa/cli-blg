@@ -46,6 +46,15 @@ small {
   color: #666;
 }
 
+img {
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+a {
+  color: #084b6f;
+}
+
 footer {
   margin-top: 40px;
   border-top: 1px solid #333;

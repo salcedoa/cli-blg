@@ -64,6 +64,15 @@ small {
   color: #888;
 }
 
+img {
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+a {
+  color: #b565a2;
+}
+
 footer {
   margin-top: 24px;
   text-align: center;

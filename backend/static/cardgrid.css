@@ -27,3 +27,12 @@ footer {
   padding-top: 1em;
   text-align: center;
 }
+
+img {
+  margin-top: 10px;
+  max-width: 210px;
+}
+
+a {
+  color: #6586b5;
+}

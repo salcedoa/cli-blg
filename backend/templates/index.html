@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='cyan.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='newspaper.css') }}">
   </head>
   <body>
     <div class="main">
@@ -19,7 +19,7 @@
           <div class="post-container">
             <h3>{{ post.title }}</h3>            
             <p>{{ post.body|safe }}</p>
-            <small>{{ post.postTime }} ~ Post #{{ post.id }}</small>
+            <small>{{ post.postTime }} • Post #{{ post.id }}</small>
           </div>
         {% endfor %}
       </div>
